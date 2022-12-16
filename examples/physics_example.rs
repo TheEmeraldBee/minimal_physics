@@ -9,7 +9,7 @@ use macroquad::color::Color;
 use macroquad::input::{is_key_down, is_key_pressed, KeyCode};
 use macroquad::math::vec2;
 use macroquad::prelude::get_frame_time;
-use macroquad::window::next_frame;
+use macroquad::window::{clear_background, next_frame};
 use minimal_physics::prelude::*;
 
 pub struct Player {
@@ -42,7 +42,7 @@ impl Player {
                 // Check if we are grounded
                 if collider.is_overlapping(vec2i32(0, -1), solid_collider) {
                     // Jump!
-                    actor.velocity.y = 150.0;
+                    actor.velocity.y = 400.0;
 
                     // We've jumped, so we can leave the loop
                     break;
@@ -77,12 +77,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
     world.spawn((
         // An identifier for a solid (MUST HAVE)
         Solid,
-        Collider::new(0, -150, 150, 25)
+        Collider::new(0, -150, 800, 25)
     ));
 
 
     // Main run loop
     'running: loop {
+        clear_background(Color::new(0.2, 0.2, 0.2, 1.0));
 
         set_camera(&Camera2D {
             zoom: vec2(1.0 / 1920.0, 1.0 / 1080.0),
