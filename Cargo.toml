@@ -12,3 +12,6 @@ macroquad = "0.3.25"
 [lib]
 name = "minimal_physics"
 crate-type = ["lib"]
+
+[[example]]
+name = "physics_example"

@@ -11,6 +11,13 @@ pub struct Actor {
 }
 
 impl Actor {
+    pub fn new() -> Self {
+        Self {
+            velocity: Default::default(),
+            remainder: Default::default()
+        }
+    }
+
     pub fn update(&mut self, my_collider: &mut Collider, solids: &Vec<(Entity, &Collider)>) {
         let move_amount_x = self.velocity.x * get_frame_time();
 
