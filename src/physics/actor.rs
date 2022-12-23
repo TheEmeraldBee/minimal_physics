@@ -4,17 +4,18 @@ use macroquad::prelude::get_frame_time;
 use crate::physics::collider::Collider;
 use crate::vec2i32;
 
-#[derive(Debug, Clone)]
 pub struct Actor {
     pub velocity: Vec2,
-    pub remainder: Vec2
+    pub remainder: Vec2,
+    pub riding_entities: Vec<Entity>,
 }
 
 impl Actor {
     pub fn new() -> Self {
         Self {
             velocity: Default::default(),
-            remainder: Default::default()
+            remainder: Default::default(),
+            riding_entities: vec![],
         }
     }
 
@@ -66,5 +67,9 @@ impl Actor {
             my_collider.y += step;
             move_amount -= step;
         }
+    }
+
+    pub fn is_riding(&self, entity: Entity) -> bool {
+        self.riding_entities.contains(&entity)
     }
 }

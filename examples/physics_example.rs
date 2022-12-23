@@ -54,7 +54,6 @@ impl Player {
     }
 }
 
-
 #[macroquad::main("Testing")]
 async fn main() -> Result<(), Box<dyn Error>> {
 
@@ -67,6 +66,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         Actor::new(),
         Collider::new(0, 0, 25, 50)
     ));
+
     // Create a player class
     let mut player = Player {
         // Give it an entity to be able to find components on it
@@ -76,7 +76,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // Spawn Some Solids
     world.spawn((
         // An identifier for a solid (MUST HAVE)
-        Solid,
+        Solid::new(),
         Collider::new(0, -150, 800, 25)
     ));
 

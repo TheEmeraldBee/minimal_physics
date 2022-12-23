@@ -25,16 +25,16 @@ impl Collider {
         }
     }
 
-    fn min_x(&self) -> i32 {
+    pub fn min_x(&self) -> i32 {
         self.x
     }
-    fn min_y(&self) -> i32 {
+    pub fn min_y(&self) -> i32 {
         self.y
     }
-    fn max_x(&self) -> i32 {
+    pub fn max_x(&self) -> i32 {
         self.x + self.width
     }
-    fn max_y(&self) -> i32 {
+    pub fn max_y(&self) -> i32 {
         self.y + self.height
     }
 
